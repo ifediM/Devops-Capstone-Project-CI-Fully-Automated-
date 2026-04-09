@@ -200,7 +200,7 @@ jobs:
                | select(.name=="backend")
                | .image)
             = "ifedim/backend:" + strenv(IMAGE_TAG)
-          ' kube/backend.yaml
+          ' k8s-prod/backend.yaml
 
           # -- Update ONLY Deployment images (frontend)
           yq -i '
@@ -209,7 +209,7 @@ jobs:
                | select(.name=="frontend")
                | .image)
             = "ifedim/frontend:" + strenv(IMAGE_TAG)
-          ' kube/frontend.yaml
+          ' k8s-prod/frontend.yaml
 
       - name: Commit & push to CD repo
         working-directory: cd
